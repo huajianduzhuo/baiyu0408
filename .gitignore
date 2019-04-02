@@ -1,0 +1,34 @@
+.DS_Store
+node_modules
+baiyu0408fe/dist
+baiyu0408fe/node_modules
+
+# local env files
+.env.local
+.env.*.local
+baiyu0408fe/.env.local
+baiyu0408fe/.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+baiyu0408fe/npm-debug.log*
+baiyu0408fe/yarn-debug.log*
+baiyu0408fe/yarn-error.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+baiyu0408fe/.idea
+baiyu0408fe/.vscode
+baiyu0408fe/*.suo
+baiyu0408fe/*.ntvs*
+baiyu0408fe/*.njsproj
+baiyu0408fe/*.sln
+baiyu0408fe/*.sw*
