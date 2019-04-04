@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const path = require('path')
+const fs = require('fs')
 const bodyParser = require('koa-bodyparser')
 const router = require('./routes')
 const app = new Koa()
@@ -10,11 +11,20 @@ app.use(main)
 
 // body-parser
 app.use(bodyParser())
+
 app.use(async (ctx, next) => {
-  ctx.body = ctx.request.body
-  next()
+  await next()
+  if (ctx.status === 404) {
+    ctx.status = 200
+    ctx.type = 'html'
+    ctx.body = fs.createReadStream('./baiyu0408fe/dist/index.html')
+  }
 })
 
+/* app.use(async (ctx, next) => {
+  ctx.body = ctx.request.body
+  next()
+}) */
 // router
 app
   .use(router.routes())
