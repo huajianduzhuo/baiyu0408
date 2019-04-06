@@ -4,6 +4,7 @@
   "description": "祝白宇0408生日快乐",
   "main": "app.js",
   "scripts": {
+    "start": "supervisor –harmony app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
