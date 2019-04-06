@@ -112,6 +112,7 @@ function apiAxios ({ method, url, params, config, axiosType }) {
   if (params) {
     params = filterNull(params)
   }
+  store.dispatch('toggleLoadingState')
   let axiosObj = axiosType === 'greed' ? greedAxios : normalAxios
   let initConfig = {
     method: method,
@@ -134,6 +135,7 @@ function apiAxios ({ method, url, params, config, axiosType }) {
   }
   return axiosObj(axiosConfig)
     .then(function (res) {
+      store.dispatch('toggleLoadingState')
       if (res.data.code === 0) {
         return Promise.resolve(res.data)
       } else {
@@ -143,6 +145,7 @@ function apiAxios ({ method, url, params, config, axiosType }) {
     })
     .catch(function (err) {
       console.log(err)
+      store.dispatch('toggleLoadingState')
       if (!err.code && err.constructor.name !== 'Cancel') {
         bus.$toast.error('请求失败')
       }

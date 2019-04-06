@@ -10,6 +10,10 @@ export default new Router({
     {
       path: '/saytoby',
       component: () => import('./views/SayToBy.vue')
+    },
+    {
+      path: '/list',
+      component: () => import('./views/List.vue')
     }
   ]
 })

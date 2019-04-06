@@ -5,7 +5,8 @@ const pool = mysql.createPool({
   port: 3306,
   user: 'myj',
   password: '1234',
-  database: 'baiyu0408'
+  database: 'baiyu0408',
+  charset: 'utf8'
 })
 
 pool.on('error', err => {
