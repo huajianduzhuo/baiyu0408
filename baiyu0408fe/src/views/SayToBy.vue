@@ -57,7 +57,7 @@ export default {
         }
       ],
       formData: {
-        wbID: '',
+        wbID: localStorage.getItem('name') || '',
         words: '',
         addressProvince: '北京',
         addressCity: '北京'
@@ -100,6 +100,7 @@ export default {
           if (result) {
             addWords(this.formData)
               .then(data => {
+                localStorage.setItem('name', this.formData.wbID)
                 this.$toast.success(data.message)
               })
           }
