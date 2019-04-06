@@ -1,10 +1,23 @@
 const Router = require('koa-router')
+const wordsModel = require('./models/words')
+const Result = require('./common/result')
 const router = new Router({
   prefix: '/api'
 })
 router.use(async (ctx, next) => {
   ctx.body = ctx.request.body
-  next()
+  await next()
+})
+
+router.post('/say', async (ctx, next) => {
+  let words = ctx.body.words
+  words.computerId = ctx.request.ip
+  try {
+    let id = await wordsModel.insertIntoWords(words)
+    ctx.body = new Result({id})
+  } catch (error) {
+    ctx.body = new Result(null, 1, error)
+  }
 })
 
 module.exports = router
