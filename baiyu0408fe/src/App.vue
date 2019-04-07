@@ -29,4 +29,11 @@ export default {
 .text-center {
   text-align: center;
 }
+.flex {
+  display: flex;
+}
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
 </style>

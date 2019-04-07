@@ -1,9 +1,6 @@
 <template>
   <div>
-    <mu-appbar style="width: 100%" title="" :z-depth="0">
-      <icon name="arrow_lift" class="back-icon" slot="left" @click="$router.back()"></icon>
-      <div>小宇宙想对白宇说</div>
-    </mu-appbar>
+    <my-header title="小宇宙想对白宇说"></my-header>
     <mu-container class="form-wrap">
       <mu-form :model="formData" ref="form" label-position="left" label-width="100">
         <mu-form-item label="微博昵称" prop="wbID" :rules="validateWbID">
@@ -30,11 +27,11 @@
 
 <script>
 import AddressData from '../data/address.js'
-import Icon from '../components/Icon.vue'
+import Header from '../components/Header.vue'
 import { addWords } from '../api/api'
 export default {
   name: 'SayToBaiyu',
-  components: { Icon },
+  components: { MyHeader: Header },
   data () {
     return {
       validateWbID: [
@@ -116,8 +113,5 @@ export default {
 }
 .padding8 {
   padding: 0 8px;
-}
-.back-icon {
-  width: 40px;
 }
 </style>

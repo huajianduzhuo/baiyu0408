@@ -135,8 +135,8 @@ function apiAxios ({ method, url, params, config, axiosType }) {
   }
   return axiosObj(axiosConfig)
     .then(function (res) {
-      store.dispatch('toggleLoadingState')
       if (res.data.code === 0) {
+        store.dispatch('toggleLoadingState')
         return Promise.resolve(res.data)
       } else {
         bus.$toast.error(res.data.message)

@@ -6,3 +6,6 @@ export const addWords = (words) => {
 export const getUserWords = (name) => {
   return axios.get('/getUserWordsList', { name })
 }
+export const getAllWords = (name) => {
+  return axios.get('/getAllWordsList', { name })
+}

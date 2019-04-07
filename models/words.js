@@ -26,6 +26,16 @@ function createWordsModel (words) {
   return model
 }
 
+function convertModelToViewData (model) {
+  let words = {}
+  for ([columnName, name, fromUser] of wordsMap) {
+    if (fromUser && model[columnName]) {
+      words[name] = model[columnName]
+    }
+  }
+  return words
+}
+
 function insertIntoWords (words) {
   let model = createWordsModel(words)
   model['create_time'] = new Date()
@@ -49,7 +59,34 @@ function getWordsListByName (name, computerId) {
         console.log('select words list by name failed: ', error)
         reject('查询失败')
       } else {
-        resolve(results)
+        let list = results.map(model => convertModelToViewData(model))
+        resolve(list)
+      }
+    })
+  })
+}
+
+function getAllWordsList (order) {
+  order = order || 'desc'
+  let sql
+  switch (order) {
+    case 'desc':
+      sql = 'select words_id, wb_name, words, province, city from words where status_code = 0 order by create_time desc'
+      break
+    case 'asc':
+      sql = 'select words_id, wb_name, words, province, city from words where status_code = 0 order by create_time asc'
+      break
+    default:
+      sql = 'select words_id, wb_name, words, province, city from words where status_code = 0 order by create_time desc'
+  }
+  return new Promise((resolve, reject) => {
+    pool.query(sql, (error, results) => {
+      if (error) {
+        console.log('select all words list failed: ', error)
+        reject('查询失败')
+      } else {
+        let list = results.map(model => convertModelToViewData(model))
+        resolve(list)
       }
     })
   })
@@ -57,5 +94,6 @@ function getWordsListByName (name, computerId) {
 
 module.exports = {
   insertIntoWords,
-  getWordsListByName
+  getWordsListByName,
+  getAllWordsList
 }
