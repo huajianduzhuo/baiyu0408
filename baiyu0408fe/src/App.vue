@@ -36,4 +36,15 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.animateRotate {
+  animation: linearRotate 5s linear 0s infinite;
+}
+@keyframes linearRotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
 </style>

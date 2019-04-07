@@ -3,7 +3,7 @@
   "short_name": "baiyu0408fe",
   "icons": [
     {
-      "src": "",
+      "src": "/images/baiyu.jpg",
       "sizes": "192x192",
       "type": "image/png"
     }

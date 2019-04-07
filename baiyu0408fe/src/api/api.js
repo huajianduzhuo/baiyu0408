@@ -9,3 +9,6 @@ export const getUserWords = (name) => {
 export const getAllWords = (name) => {
   return axios.get('/getAllWordsList', { name })
 }
+export const getCityDataCount = () => {
+  return axios.get('/getCityWordsCount')
+}

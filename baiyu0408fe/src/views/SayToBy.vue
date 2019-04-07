@@ -68,7 +68,7 @@ export default {
       this.addressPickerShow = !this.addressPickerShow
     },
     addressChange (value, index) {
-      let addressProvince, addressCity
+      let [addressProvince, addressCity] = this.address
       switch (index) {
         case 0:
           addressProvince = value
@@ -99,6 +99,7 @@ export default {
               .then(data => {
                 localStorage.setItem('name', this.formData.wbID)
                 this.$toast.success(data.message)
+                this.$router.push('/')
               })
           }
         })
