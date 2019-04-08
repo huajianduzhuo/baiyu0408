@@ -6,6 +6,7 @@
       </mu-avatar>
       <icon name="list" slot="right" class="list-icon" @click="goList"></icon>
     </mu-appbar>
+    <echarts-map :data="countData"></echarts-map>
     <div class="action">
       <div class="action-item play"></div>
       <div class="action-item add" @click="$router.push('/saytoby')"></div>
@@ -15,10 +16,11 @@
 
 <script>
 import Icon from '../components/Icon.vue'
+import Map from './Map'
 import { getCityDataCount } from '../api/api.js'
 export default {
   name: 'Index',
-  components: { Icon },
+  components: { Icon, EchartsMap: Map },
   data () {
     return {
       countData: []
