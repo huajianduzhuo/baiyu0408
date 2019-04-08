@@ -16,7 +16,9 @@ router.post('/say', async (ctx, next) => {
     let id = await wordsModel.insertIntoWords(words)
     ctx.body = new Result({id})
   } catch (error) {
-    ctx.body = new Result(null, 1, error)
+    console.log(error)
+    ctx.status = 500
+    ctx.body = new Result(null, 1, '请求失败')
   }
 })
 
@@ -27,7 +29,9 @@ router.get('/getUserWordsList', async (ctx, next) => {
     let results = await wordsModel.getWordsListByName(name, computerId)
     ctx.body = new Result(results)
   } catch (error) {
-    ctx.body = new Result(null, 1, error)
+    console.log(error)
+    ctx.status = 500
+    ctx.body = new Result(null, 1, '请求失败')
   }
 })
 
@@ -36,16 +40,21 @@ router.get('/getAllWordsList', async (ctx, next) => {
     let results = await wordsModel.getAllWordsList()
     ctx.body = new Result(results)
   } catch (error) {
-    ctx.body = new Result(null, 1, error)
+    console.log(error)
+    ctx.status = 500
+    ctx.body = new Result(null, 1, '请求失败')
   }
 })
 
 router.get('/getCityWordsCount', async (ctx, next) => {
   try {
     let results = await wordsModel.getCityWordsCount()
+    console.log(results)
     ctx.body = new Result(results)
   } catch (error) {
-    ctx.body = new Result(null, 1, error)
+    console.log(error)
+    ctx.status = 500
+    ctx.body = new Result(null, 1, '请求失败')
   }
 })
 

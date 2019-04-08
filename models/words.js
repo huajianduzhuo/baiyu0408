@@ -94,7 +94,7 @@ function getAllWordsList (order) {
 
 function getCityWordsCount () {
   return new Promise((resolve, reject) => {
-    pool.query('select city as addressCity, count(0) from words group by city;', (error, results) => {
+    pool.query('select city as addressCity, count(0) as count from words group by city;', (error, results) => {
       if (error) {
         console.log('select words list by name failed: ', error)
         reject('查询失败')
@@ -108,5 +108,6 @@ function getCityWordsCount () {
 module.exports = {
   insertIntoWords,
   getWordsListByName,
-  getAllWordsList
+  getAllWordsList,
+  getCityWordsCount
 }
