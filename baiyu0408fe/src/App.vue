@@ -25,14 +25,15 @@ export default {
 #app {
   max-width: 750px;
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 60px;
 }
 .header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
 }
 .text-center {
   text-align: center;
