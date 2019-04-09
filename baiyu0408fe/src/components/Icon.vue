@@ -25,6 +25,6 @@ export default {
   background-repeat: no-repeat;
   width: 40px;
   min-width: 20px;
-  height: 100%;
+  min-height: 20px;
 }
 </style>

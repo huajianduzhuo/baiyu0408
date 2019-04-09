@@ -7,8 +7,9 @@
       <icon name="list" slot="right" class="list-icon" @click="goList"></icon>
     </mu-appbar>
     <echarts-map :data="countData" v-if="countData.length > 0"></echarts-map>
+    <alter-swiper :list="list" v-if="alterSwiperShow" @close="alterSwiperShow = false"></alter-swiper>
     <div class="action">
-      <div class="action-item play"></div>
+      <div class="action-item play" @click="play"></div>
       <div class="action-item add" @click="$router.push('/saytoby')"></div>
     </div>
   </div>
@@ -17,13 +18,16 @@
 <script>
 import Icon from '../components/Icon.vue'
 import Map from './Map'
-import { getCityDataCount } from '../api/api.js'
+import AlterSwiper from '../components/AlterSwipe.vue'
+import { getCityDataCount, getAllWords } from '../api/api.js'
 export default {
   name: 'Index',
-  components: { Icon, EchartsMap: Map },
+  components: { Icon, EchartsMap: Map, AlterSwiper },
   data () {
     return {
-      countData: []
+      countData: [],
+      list: [],
+      alterSwiperShow: false
     }
   },
   methods: {
@@ -36,12 +40,30 @@ export default {
           console.log(error)
         })
     },
+    fetchList () {
+      getAllWords()
+        .then(data => {
+          this.list = data.data
+          if (this.list.length > 1) {
+            this.alterSwiperShow = true
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    play () {
+      if (this.list.length > 0) {
+        this.alterSwiperShow = true
+      }
+    },
     goList () {
       this.$router.push('/list')
     }
   },
   mounted () {
     this.fetchCountData()
+    this.fetchList()
   }
 }
 </script>
