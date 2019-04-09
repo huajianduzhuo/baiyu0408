@@ -13,7 +13,7 @@ let convertData = function (data) {
     if (geoCoord) {
       res.push({
         name: data[i].addressCity,
-        value: geoCoord.concat(data[i].count || 0)
+        value: geoCoord.concat(data[i].count)
       })
     }
   }
@@ -33,16 +33,17 @@ export default {
       mapChart: null,
       option: {
         title: {
-          text: '全国主要城市空气质量 - 百度地图',
-          subtext: 'data from PM25.in',
-          sublink: 'http://www.pm25.in',
+          text: '全国小宇宙分布',
           left: 'center'
         },
         tooltip: {
-          trigger: 'item'
+          trigger: 'item',
+          formatter ({ name, value }) {
+            return `${name}: ${value[2]}`
+          }
         },
         bmap: {
-          center: [104.114129, 37.550339],
+          center: [109.114129, 32.550339],
           zoom: 5,
           roam: true,
           mapStyle: {
@@ -147,13 +148,11 @@ export default {
         },
         series: [
           {
-            name: 'pm2.5',
+            name: '小宇宙',
             type: 'scatter',
             coordinateSystem: 'bmap',
             data: convertData(this.data),
-            symbolSize: function (val) {
-              return val[2] / 10
-            },
+            symbolSize: 8,
             label: {
               normal: {
                 formatter: '{b}',
@@ -176,10 +175,8 @@ export default {
             coordinateSystem: 'bmap',
             data: convertData(this.data.sort(function (a, b) {
               return b.value - a.value
-            }).slice(0, 6)),
-            symbolSize: function (val) {
-              return val[2] / 10
-            },
+            }).slice(0, 5)),
+            symbolSize: 10,
             showEffectOn: 'render',
             rippleEffect: {
               brushType: 'stroke'
@@ -213,7 +210,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .map-container {
+  margin-top: 10px;
   width: 100%;
-  height: 400px;
+  height: 450px;
 }
 </style>

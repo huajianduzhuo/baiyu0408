@@ -6,7 +6,7 @@
       </mu-avatar>
       <icon name="list" slot="right" class="list-icon" @click="goList"></icon>
     </mu-appbar>
-    <echarts-map :data="countData"></echarts-map>
+    <echarts-map :data="countData" v-if="countData.length > 0"></echarts-map>
     <div class="action">
       <div class="action-item play"></div>
       <div class="action-item add" @click="$router.push('/saytoby')"></div>
@@ -53,7 +53,9 @@ export default {
 }
 .action {
   position: fixed;
-  bottom: 70px;
+  bottom: 40px;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 60px;
   display: flex;
