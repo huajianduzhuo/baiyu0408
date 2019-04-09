@@ -1,5 +1,5 @@
 <template>
-  <mu-appbar style="width: 100%" title="" :z-depth="0">
+  <mu-appbar class="header" title="" :z-depth="0">
     <icon name="arrow_lift" class="back-icon" slot="left" @click="$router.back()"></icon>
     <div>{{title}}</div>
     <slot name="right" slot="right"></slot>

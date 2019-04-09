@@ -10,6 +10,7 @@
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 100;
   background: rgba($color: #000000, $alpha: 0.3);
   display: flex;
   justify-content: center;

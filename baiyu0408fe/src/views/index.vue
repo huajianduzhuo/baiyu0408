@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mu-appbar style="width: 100%; letter-spacing: -0.2px;" title="BaiYu 0408 Happy Birthday" :z-depth="0">
+    <mu-appbar style="letter-spacing: -0.2px;" class="header" title="BaiYu 0408 Happy Birthday" :z-depth="0">
       <mu-avatar slot="left">
         <img src="../assets/images/baiyu.jpg" class="animateRotate">
       </mu-avatar>
@@ -37,7 +37,6 @@ export default {
         })
     },
     goList () {
-      console.log(123)
       this.$router.push('/list')
     }
   },
