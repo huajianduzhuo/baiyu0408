@@ -49,7 +49,6 @@ router.get('/getAllWordsList', async (ctx, next) => {
 router.get('/getCityWordsCount', async (ctx, next) => {
   try {
     let results = await wordsModel.getCityWordsCount()
-    console.log(results)
     ctx.body = new Result(results)
   } catch (error) {
     console.log(error)

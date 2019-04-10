@@ -21,7 +21,6 @@ export default {
   watch: {
     show (val) {
       if (!val) {
-        console.log(343)
         let x = parseInt(Math.random() * docWidth)
         let y = parseInt(Math.random() * docHeight - docHeight / 2)
         this.$refs.swiper.style.transformOrigin = `${x}px ${y}px`

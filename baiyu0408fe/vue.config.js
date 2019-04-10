@@ -1,6 +1,6 @@
 module.exports = {
   configureWebpack: {
-    watch: true
+    watch: false
   },
   devServer: {
     proxy: 'http://localhost:3000'
