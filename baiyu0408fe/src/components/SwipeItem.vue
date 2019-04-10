@@ -42,7 +42,7 @@ export default {
   padding: 35px 60px;
   color: #2D2B46;
   background-color: #F5F5F5;
-  background-image: url('../assets/images/chatu.png');
+  background-image: url('../assets/images/chatu.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 110%;
